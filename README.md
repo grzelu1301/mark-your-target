@@ -2,7 +2,7 @@
 
 # Mark Your Target
 
-A World of Warcraft: Forever add-on by **Goshdev** for building a reusable NPC targeting macro. Type part of an NPC name, pick the mob you want, and save it straight to WoW’s Macros window.
+A WoW: Forever add-on by **Goshdev** for when you keep changing the NPC name in the same targeting macro. Type `/myt`, pick a mob, and hit Save. You can keep the same macro on your action bar as you switch targets.
 
 [Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.2.1](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.2.1)
 
@@ -29,3 +29,5 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 The add-on ships with 9,810 distinct English NPC names. Zone coverage varies, and you can always enter a name manually. See the [data credits and licenses](DATA-CREDITS.md).
 
 The add-on code is licensed under [GPLv3](LICENSE.md).
+
+Project icon adapted from [Crosshair by Delapouite](https://game-icons.net/1x1/delapouite/crosshair.html), licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). The artwork was recolored and exported as PNG.
