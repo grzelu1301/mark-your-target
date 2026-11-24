@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: Mark Your Target
 ## Notes: Pick an NPC and save a targeting, skull marker, and ping macro.
-## Version: 1.2.0
+## Version: 1.2.1
 ## IconTexture: Interface\TargetingFrame\UI-RaidTargetingIcon_8
 
 NPCs.lua

@@ -4,7 +4,7 @@
 
 A World of Warcraft: Forever add-on by **Goshdev** for building a reusable NPC targeting macro. Type part of an NPC name, pick the mob you want, and save it straight to WoW’s Macros window.
 
-[Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.2.0](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.2.0)
+[Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.2.1](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.2.1)
 
 ## Use it in game
 
@@ -27,3 +27,5 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 ## NPC data
 
 The add-on ships with 9,810 distinct English NPC names. Zone coverage varies, and you can always enter a name manually. See the [data credits and licenses](DATA-CREDITS.md).
+
+The add-on code is licensed under [GPLv3](LICENSE.md).

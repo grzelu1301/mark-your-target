@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+- Explicitly license the add-on code under GPLv3 and include the license notice in the install ZIP. In-game behavior stays the same.
+
 ## 1.2.0
 
 - Match NPC names by exact name, prefix, word start, or any matching substring.

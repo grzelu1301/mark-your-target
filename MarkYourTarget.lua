@@ -1,3 +1,4 @@
+-- SPDX-License-Identifier: GPL-3.0-only
 local _, addon = ...
 local macroName = "Mark Your Target"
 local minimapIcon = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
