@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Type `/myt <name>` to update the macro directly from chat.
+- Keep exact and out-of-zone matches accessible when there are local suggestions.
+- Rebuild the NPC catalog from Forever spawn records and player observations. Ghostmaw now appears as a Riverglades match.
+
 ## 1.2.1
 
 - Explicitly license the add-on code under GPLv3 and include the license notice in the install ZIP. In-game behavior stays the same.

@@ -44,6 +44,43 @@ local function showSavedMacro(index)
     return true
 end
 
+local function saveTarget(raw)
+    local target = trim(raw)
+    if target == "" then
+        return nil, "Enter a target name first."
+    elseif raw:find("[%c%[%];|]") then
+        return nil, "Enter a plain NPC name without macro syntax."
+    elseif #target > maxNameBytes then
+        return nil, "That name is too long to fit in the macro."
+    elseif InCombatLockdown() then
+        return nil, "Leave combat to save the macro."
+    end
+
+    if MacroFrame and MacroFrame:IsShown() then
+        MacroFrame:SaveMacro()
+    end
+    local index, oldBody, oldIcon = findMacro()
+    local body = macroStart .. target .. macroEnd
+    local icon = C_Spell.GetSpellTexture(huntersMarkSpellID) or huntersMarkIcon
+    if index then
+        if oldBody ~= body or oldIcon ~= icon then
+            pcall(EditMacro, index, nil, icon, body)
+        end
+    else
+        local accountCount = GetNumMacros()
+        if accountCount >= Constants.MacroConsts.MAX_ACCOUNT_MACROS then
+            return nil, "Free a slot in General Macros, then try again."
+        end
+        pcall(CreateMacro, macroName, icon, body, false)
+    end
+
+    local savedIndex, savedBody, savedIcon = findMacro()
+    if savedBody == body and savedIcon == icon then
+        return savedIndex, nil, not index
+    end
+    return nil, "WoW could not save the macro. Open /macro to check it."
+end
+
 local function currentZone()
     local zoneNames, mapIDs = {}, {}
     local function addName(name)
@@ -78,31 +115,36 @@ local function isInZone(npc, zoneNames, mapIDs)
 end
 
 local function findMatches(query, zoneNames, mapIDs)
-    local exact, prefix, wordStart, substring = {}, {}, {}, {}
+    local exact = {}
+    local nearby, other = {{}, {}, {}}, {{}, {}, {}}
+    local localCount = 0
     local wordPattern = "%f[%w]" .. query:gsub("(%W)", "%%%1")
     for _, npc in ipairs(addon.npcs) do
         local name = npc[2]
         local start = name:find(query, 1, true)
-        if start and (not zoneNames or isInZone(npc, zoneNames, mapIDs)) then
-            local bucket
-            if name == query then
-                bucket = exact
-            elseif start == 1 then
-                bucket = prefix
-            elseif name:find(wordPattern) then
-                bucket = wordStart
-            else
-                bucket = substring
+        if start then
+            local localMatch = zoneNames and isInZone(npc, zoneNames, mapIDs)
+            if localMatch then
+                localCount = localCount + 1
             end
-            bucket[#bucket + 1] = npc[1]
+            if name == query then
+                exact[#exact + 1] = npc[1]
+            else
+                local ranks = localMatch and nearby or other
+                local rank = start == 1 and 1 or (name:find(wordPattern) and 2 or 3)
+                local bucket = ranks[rank]
+                bucket[#bucket + 1] = npc[1]
+            end
         end
     end
-    for _, bucket in ipairs({prefix, wordStart, substring}) do
-        for _, name in ipairs(bucket) do
-            exact[#exact + 1] = name
+    for _, ranks in ipairs({nearby, other}) do
+        for _, bucket in ipairs(ranks) do
+            for _, name in ipairs(bucket) do
+                exact[#exact + 1] = name
+            end
         end
     end
-    return exact
+    return exact, localCount
 end
 
 local function createWindow()
@@ -222,21 +264,20 @@ local function createWindow()
             results = {}
             summary:SetText("Type a name to see suggestions.")
         else
-            local searchAllZones = allZones:GetChecked()
-            if not searchAllZones then
-                local zoneNames, mapIDs = currentZone()
-                results = findMatches(query, zoneNames, mapIDs)
-            end
-            local foundInZone = not searchAllZones and #results > 0
-            if not foundInZone then
-                results = findMatches(query)
+            local localCount
+            if allZones:GetChecked() then
+                results, localCount = findMatches(query)
+            else
+                results, localCount = findMatches(query, currentZone())
             end
             if #results == 0 then
                 summary:SetText("No suggestions. You can still save the name.")
-            elseif foundInZone then
-                summary:SetFormattedText("%d in this zone", #results)
-            elseif searchAllZones then
+            elseif allZones:GetChecked() then
                 summary:SetFormattedText("%d across all zones", #results)
+            elseif localCount == #results then
+                summary:SetFormattedText("%d in this zone", localCount)
+            elseif localCount > 0 then
+                summary:SetFormattedText("%d in this zone, %d other matches", localCount, #results - localCount)
             else
                 summary:SetFormattedText("No local matches. Showing %d across all zones.", #results)
             end
@@ -271,44 +312,16 @@ local function createWindow()
     end
 
     local function saveMacro()
-        local raw = input:GetText()
-        local target = trim(raw)
-        if target == "" then
-            status:SetText("Enter a target name first.")
-        elseif raw:find("[%c%[%];|]") then
-            status:SetText("Enter a plain NPC name without macro syntax.")
-        elseif InCombatLockdown() then
-            status:SetText("Leave combat to save the macro.")
+        local index, errorMessage = saveTarget(input:GetText())
+        if not index then
+            status:SetText(errorMessage)
+            return
+        end
+        input:ClearFocus()
+        if showSavedMacro(index) then
+            frame:Hide()
         else
-            if MacroFrame and MacroFrame:IsShown() then
-                MacroFrame:SaveMacro()
-            end
-            local index, oldBody, oldIcon = findMacro()
-            local body = macroStart .. target .. macroEnd
-            local icon = C_Spell.GetSpellTexture(huntersMarkSpellID) or huntersMarkIcon
-            if index then
-                if oldBody ~= body or oldIcon ~= icon then
-                    pcall(EditMacro, index, nil, icon, body)
-                end
-            else
-                local accountCount = GetNumMacros()
-                if accountCount >= Constants.MacroConsts.MAX_ACCOUNT_MACROS then
-                    status:SetText("Free a slot in General Macros, then try again.")
-                    return
-                end
-                pcall(CreateMacro, macroName, icon, body, false)
-            end
-            local savedIndex, savedBody, savedIcon = findMacro()
-            if savedBody == body and savedIcon == icon then
-                input:ClearFocus()
-                if showSavedMacro(savedIndex) then
-                    frame:Hide()
-                else
-                    status:SetText("Macro saved. Use /macro to put it on an action bar.")
-                end
-            else
-                status:SetText("WoW could not save the macro. Open /macro to check it.")
-            end
+            status:SetText("Macro saved. Use /macro to put it on an action bar.")
         end
     end
 
@@ -352,7 +365,27 @@ local function toggleWindow()
 end
 
 SLASH_MARKYOURTARGET1 = "/myt"
-SlashCmdList.MARKYOURTARGET = toggleWindow
+SlashCmdList.MARKYOURTARGET = function(raw)
+    local target = trim(raw or "")
+    if target == "" then
+        toggleWindow()
+        return
+    end
+
+    local index, errorMessage, created = saveTarget(raw)
+    if not index then
+        print(macroName .. ": " .. errorMessage)
+        return
+    end
+    if window and window:IsShown() then
+        window:Hide()
+    end
+    local message = macroName .. ": Macro saved for " .. target .. "."
+    if created then
+        message = message .. " Use /macro to put it on an action bar."
+    end
+    print(message)
+end
 
 -- A named Minimap child is picked up by MinimapButtonButton's normal scan.
 local button = CreateFrame("Button", "MarkYourTargetMinimapButton", Minimap)

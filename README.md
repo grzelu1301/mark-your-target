@@ -4,13 +4,15 @@
 
 A WoW: Forever add-on by **Goshdev** for when you keep changing the NPC name in the same targeting macro. Type `/myt`, pick a mob, and hit Save. You can keep the same macro on your action bar as you switch targets.
 
-[Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.2.1](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.2.1)
+[Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.3.0](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.3.0)
 
 ## Use it in game
 
 1. Open the editor with `/myt` or click its skull icon in MinimapButtonButton.
-2. Type an NPC name or choose a suggestion. For example, `Bat` finds **Vampiric Duskbat**. Search checks your current zone first and checks all zones if there are no local matches. **All zones** searches the full catalog immediately.
+2. Type an NPC name or choose a suggestion. For example, `Ghostm` finds **Ghostmaw** in Riverglades. Exact matches come first, followed by other matches from your zone, then the rest. **All zones** ranks results without the zone preference. Use **Show more** to browse past the first ten.
 3. Press **Save** out of combat. The add-on creates or updates **Mark Your Target** with the Hunter’s Mark icon and selects it in WoW’s Macros window. Drag it onto an action bar to use it.
+
+If you already know the name, type `/myt Ghostmaw` out of combat to save it directly in chat. Use `/macro` to find the macro after creating it this way.
 
 The macro clears your old target, looks for the name you picked, clears a dead match, then tries to skull-mark and ping a living target using WoW’s macro commands.
 
@@ -26,7 +28,7 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 
 ## NPC data
 
-The add-on ships with 9,810 distinct English NPC names. Zone coverage varies, and you can always enter a name manually. See the [data credits and licenses](DATA-CREDITS.md).
+The add-on ships with 10,312 distinct English NPC names backed by Forever spawn records or player observations. 10,059 names have zone data. Coverage depends on the records available, and you can always enter a name manually. See the [data sources, verification, and rebuild steps](DATA-CREDITS.md).
 
 The add-on code is licensed under [GPLv3](LICENSE.md).
 
