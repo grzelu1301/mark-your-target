@@ -4,7 +4,7 @@
 
 A WoW: Forever add-on by **Goshdev** for when you keep changing the NPC name in the same targeting macro. Type `/myt`, pick a mob, and hit Save. You can keep the same macro on your action bar as you switch targets.
 
-[Project site](https://grzelu1301.github.io/mark-your-target/) · [Download v1.3.0](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.3.0)
+[CurseForge](https://www.curseforge.com/wow/addons/mark-your-target) · [GitHub release v1.3.0](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.3.0) · [Project site](https://grzelu1301.github.io/mark-your-target/)
 
 ## Use it in game
 
