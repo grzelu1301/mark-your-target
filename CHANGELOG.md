@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0
+
+- Type `/mytgt Ghostmaw` to prepare a target out of combat. Click **Quick Target** or use its optional keybind to target, skull-mark, and ping without using a macro slot.
+- Select an NPC or player and use `/mytgt [@target]` for Quick Target or `/myt [@target]` to update the saved macro. Forever player surnames are included.
+- When pings are disabled, the picker and chat point you to **Options → Ping System → Enable Pings**.
+- The crosshair minimap icon now has WoW’s circular gold border and follows the Classic minimap as it resizes. MinimapButtonButton can still collect it.
+
 ## 1.3.0
 
 - Type `/myt <name>` to update the macro directly from chat.
