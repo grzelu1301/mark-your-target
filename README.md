@@ -30,7 +30,7 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 
 | Quick Target | Ping reminder | Minimap crosshair |
 | --- | --- | --- |
-| ![Quick Target panel above a skull-marked Auctioneer Tricket](docs/assets/quick-target.png) | ![Target picker showing the warning to enable pings](docs/assets/ping-warning.png) | ![MinimapButtonButton tray with the Mark Your Target crosshair on the bottom row](docs/assets/minimap-crosshair.png) |
+| ![Quick Target panel for Auctioneer Tricket with the skull marker below it](docs/assets/quick-target.png) | ![Target picker showing the warning to enable pings](docs/assets/ping-warning.png) | ![MinimapButtonButton tray with the Mark Your Target crosshair on the bottom row](docs/assets/minimap-crosshair.png) |
 
 | Pick an NPC | Save to WoW’s Macros window | Search across all zones |
 | --- | --- | --- |
