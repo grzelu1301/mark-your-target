@@ -28,6 +28,10 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 
 ## Screenshots
 
+| Quick Target | Ping reminder | Minimap crosshair |
+| --- | --- | --- |
+| ![Quick Target panel above a skull-marked Auctioneer Tricket](docs/assets/quick-target.png) | ![Target picker showing the warning to enable pings](docs/assets/ping-warning.png) | ![MinimapButtonButton tray with the Mark Your Target crosshair on the bottom row](docs/assets/minimap-crosshair.png) |
+
 | Pick an NPC | Save to WoW’s Macros window | Search across all zones |
 | --- | --- | --- |
 | ![The editor with Vampiric Duskbat selected](docs/assets/choose-target.png) | ![WoW’s Macros window displaying Mark Your Target](docs/assets/macro-window.png) | ![The editor showing results for Cat with All zones enabled](docs/assets/search-all-zones.png) |
