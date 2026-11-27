@@ -36,13 +36,17 @@ Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `
 
 ## Screenshots
 
-| Quick Target | Ping reminder | Minimap crosshair |
+| Build a target list | Set shortcuts in the picker | Save to the Macros window |
 | --- | --- | --- |
-| ![Quick Target panel for Auctioneer Tricket with the skull marker below it](docs/assets/quick-target.png) | ![Target picker showing the warning to enable pings](docs/assets/ping-warning.png) | ![MinimapButtonButton tray with the Mark Your Target crosshair on the bottom row](docs/assets/minimap-crosshair.png) |
+| ![Target list containing Ghost Howl and Ghost Saber with Remove and Save list controls](docs/assets/target-list.png) | ![Keybindings panel with instructions for Quick Target and Cycle Targets](docs/assets/keybindings.png) | ![WoW’s Macros window showing the macro for Ghost Howl and Ghost Saber](docs/assets/macro-window.png) |
 
-| Pick an NPC | Save to WoW’s Macros window | Search across all zones |
+| Quick Target | Find a named mob | Minimap crosshair |
 | --- | --- | --- |
-| ![The editor with Vampiric Duskbat selected](docs/assets/choose-target.png) | ![WoW’s Macros window displaying Mark Your Target](docs/assets/macro-window.png) | ![The editor showing results for Cat with All zones enabled](docs/assets/search-all-zones.png) |
+| ![Quick Target panel beside a skull-marked and pinged Kargath Grunt](docs/assets/quick-target.png) | ![NPC picker showing suggestions for Ghost and a Show more button](docs/assets/search-all-zones.png) | ![Gold arrow pointing to the Mark Your Target icon in MinimapButtonButton](docs/assets/minimap-crosshair.png) |
+
+| Open the picker | Ping reminder |
+| --- | --- |
+| ![Target picker with the search field, Keybindings and Add to list](docs/assets/choose-target.png) | ![Target picker showing the warning to enable pings](docs/assets/ping-warning.png) |
 
 ## NPC data
 
