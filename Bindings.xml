@@ -1,3 +1,4 @@
 <Bindings>
-    <Binding name="CLICK MarkYourTargetQuickButton:LeftButton" header="MARKYOURTARGET" category="ADDONS"/>
+    <Binding name="CLICK MarkYourTargetQuickButton:LeftButton" category="Mark Your Target"/>
+    <Binding name="CLICK MarkYourTargetCycleButton:LeftButton" category="Mark Your Target"/>
 </Bindings>

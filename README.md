@@ -2,9 +2,9 @@
 
 # Mark Your Target
 
-A WoW: Forever add-on by **Goshdev** for when you keep changing the NPC name in the same targeting macro. Type `/myt`, pick a mob, and hit Save. You can keep the same macro on your action bar as you switch targets.
+A WoW: Forever add-on by **Goshdev** for finding named mobs, keeping a reusable targeting macro on your bar, and cycling through a saved list. Open `/myt` to save one name or build a list.
 
-[CurseForge](https://www.curseforge.com/wow/addons/mark-your-target) · [GitHub release v1.4.0](https://github.com/grzelu1301/mark-your-target/releases/tag/v1.4.0) · [Project site](https://grzelu1301.github.io/mark-your-target/)
+[CurseForge](https://www.curseforge.com/wow/addons/mark-your-target) · [GitHub releases](https://github.com/grzelu1301/mark-your-target/releases/latest) · [Wago](https://addons.wago.io/addons/mark-your-target) · [Project site](https://grzelu1301.github.io/mark-your-target/)
 
 ## Use it in game
 
@@ -16,15 +16,23 @@ If you already know the name, type `/myt Ghostmaw` out of combat to save it dire
 
 The macro clears your old target, looks for the name you picked, clears a dead match, then tries to skull-mark and ping a living target using WoW’s macro commands.
 
+## Target lists
+
+Open `/myt`, type or select a name, and click **Add to list**. After the first entry, click a suggestion to add it directly, or type a name and click **Add**. Use **Remove** to revise the list. **Save list** updates the existing macro and opens WoW's Macros window. If the macro is already on your action bar, keep using that slot.
+
+The saved macro tries exact names in list order, then skull-marks and pings the first living match in range. WoW limits the macro to 255 bytes, so the number of names that fit depends on their length.
+
+For **Cycle Targets**, save a list of at least two names in `/myt`. Open **Keybindings** and click the field next to **Cycle Targets** to assign a key. The panel shows how many saved targets are available. Each press tries the next listed name, even if the previous name was out of range. Each entry has its own raid marker. Normal WoW targeting and marking permissions apply.
+
 ## Quick Target
 
-Type `/mytgt Ghostmaw` out of combat, then click **Quick Target**. You can assign a key in **Key Bindings → AddOns → Mark Your Target**. This uses no saved macro slot.
+Type `/mytgt Ghostmaw` out of combat, then press the **Quick Target** key or click the button. This is independent of anything saved through `/myt`. The **Keybindings** panel shows the prepared target. To assign a key, open **Keybindings** in `/myt` and click the field next to **Quick Target**. Both actions are also under **Options → Keybindings → Mark Your Target**. This uses no saved macro slot.
 
 Use `/mytgt [@target]` to prepare your selected NPC or player, or `/myt [@target]` to update the saved macro. If pings are off, check **Enable Pings** in **Options → Ping System**.
 
 ## Install
 
-Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `MarkYourTarget/MarkYourTarget.toc` is directly inside `AddOns`. Restart WoW after installing or upgrading to v1.4.0 so the client picks up the new keybinding and icon files. The add-on targets **WoW: Forever 1.60.1**. MinimapButtonButton is optional.
+Unzip the release into `World of Warcraft/_forever_/Interface/AddOns/` so that `MarkYourTarget/MarkYourTarget.toc` is directly inside `AddOns`. Restart WoW after installing or upgrading to v1.5.0 so the client picks up the new keybinding and icon files. The add-on targets **WoW: Forever 1.60.1**. MinimapButtonButton is optional.
 
 ## Screenshots
 

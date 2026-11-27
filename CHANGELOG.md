@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0
+
+- Open `/myt`, choose or type a name, and use **Add to list**. Click suggestions to add more names, or use **Remove** to adjust the list. **Save list** updates the existing macro and opens WoW’s Macros window.
+- Use the action-bar macro to find the first living match in list order, skull-mark it, and ping it when pings are enabled. The number of names that fit depends on WoW’s 255-byte macro limit.
+- Save at least two names and assign **Cycle Targets** in **/myt → Keybindings**. Each press tries the next exact name and uses a different raid marker for each list entry. Press again if the current name is missing or out of range.
+- **Quick Target** is separate. Type `/mytgt Ghostmaw`, then press its key or click the button. The Keybindings panel shows what each shortcut does and whether it has a target or list ready.
+
+Fully restart WoW after updating so it loads the bindings. Built for WoW: Forever 1.60.1.
+
 ## 1.4.0
 
 - Type `/mytgt Ghostmaw` to prepare a target out of combat. Click **Quick Target** or use its optional keybind to target, skull-mark, and ping without using a macro slot.
